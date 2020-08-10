@@ -1,0 +1,221 @@
+#include<iostream>
+#include<string>
+using namespace std;
+
+class ticket_booking
+{
+public:
+string name,From,To;
+int n,dd,mm,yy;
+void getData()
+{
+cout<<"Enter the no.of people\n";
+cin>>n;
+for(int z=0;z<n;z++)
+{
+    cout<<"Enter the name:";
+    cin>>name;
+}
+cout<<"From:\n";
+cin>>From;
+cout<<"To\n";
+cin>>To;
+
+cout<<"Enter the date of journey\n";
+cin>>dd;
+cout<<"Enter the month of journey\n";
+cin>>mm;
+cout<<"Enter the year of journey\n";
+cin>>yy;
+}
+};
+class age
+{
+    public:
+    int age;
+    void getData2()
+    {
+        cout<<"enter the age";
+        cin>>age;
+        
+       if (age < 11)
+       {
+            cout << "child.";
+        } 
+       else if (age < 46)
+       {
+            cout << "adult.";
+        }
+       else 
+       {
+            cout << "senior_citizen.";
+        }
+    }
+};
+class adult
+{
+public:
+int luggages;
+float cost,gst;
+void getData1()
+{
+cout<<"Enter the cost of the ticket\n";
+cin>>cost;
+cout<<"Enter the gst\n";
+cin>>gst;
+cout<<"Enter the number of luggages per person\n";
+cin>>luggages;
+}
+void total()
+{
+float price,extra_cost=30.00;
+if(luggages<=3)
+{
+    price=cost+gst;
+}
+else
+{
+    price=(cost+gst+(extra_cost*luggages));
+}
+cout<<"The total amount is"<<price<<endl;
+}
+};
+class child
+{
+public:
+int luggages;
+float cost;
+float gst;
+void getData1()
+{
+cout<<"Enter the cost of the ticket\n";
+cin>>cost;
+cout<<"Enter the gst\n";
+cin>>gst;
+cout<<"Enter the number of luggages per person\n";
+cin>>luggages;
+}
+void total()
+{
+float price,extra_cost=30.00;
+if(luggages<=3)
+{
+    price=cost+gst;
+}
+else
+{
+    price=(cost+gst+(extra_cost*luggages))*0.80;
+}
+cout<<"The total amount is"<<price<<endl;
+}
+};
+
+class senior_citizen
+{
+public:
+int luggages;
+float cost,gst;
+void getData1()
+{
+cout<<"Enter the cost of the ticket\n";
+cin>>cost;
+cout<<"Enter the gst\n";
+cin>>gst;
+cout<<"Enter the number of luggages\n";
+cin>>luggages;
+}
+void total()
+{
+float price,extra_cost=30.00;
+if(luggages<=3)
+{
+    price=cost+gst;
+}
+else
+{
+    price=(cost+gst+(extra_cost*luggages))*0.60;
+}
+cout<<"The total amount is"<<price<<endl;
+}
+};
+class seat
+{
+    public:
+    int s;
+    int seats=32;
+    void getdata()
+    {
+        cout<<"enter the seat numbers:\n";
+        cin>>s;
+        if(s>0 && s<33)
+        {
+           if(s>0 && s<17)
+           {
+                if(s%2==0)
+                {
+                    cout<<"aliax seat\n"; 
+                }
+                else
+                {
+                    cout<<"window seat\n";
+                }
+           }
+           if(s>=17 && s<33)
+           {
+                if(s%2==0)
+                {
+                    cout<<"window seat\n";
+                }
+                else
+                {
+                    cout<<"aliax seat\n";
+                }
+                
+           }
+        }   
+        else
+        {
+            cout<<"invalid seat number\n";
+        }
+    }
+};
+
+int main()
+{
+ticket_booking t;
+t.getData();
+age g;
+g.getData2();
+adult a;
+child c;
+senior_citizen s;
+int category;
+cout<<"Enter the category\n1.adult\n2.child\n3.senior_citizen\n";
+cin>>category;
+switch(category)
+{
+case 1:adult();
+        a.getData1();
+        a.total();
+      break;
+case 2:child();
+        c.getData1();
+        c.total();
+      break;
+case 3:senior_citizen();
+        s.getData1();
+        s.total();
+      break;
+case 4:exit(0);
+}
+
+seat se;
+for (int i=0;i<t.n;i++)
+{
+    se.getdata();
+}
+cout<<"Name:"<<t.name<<endl<<"From:"<<t.From<<endl<<"To:"<<t.To<<endl<<"no. of people:"<<t.n<<endl;
+cout<<"date of journey:"<<t.dd<<endl<<"month of journey:"<<t.mm<<endl<<"year of journey"<<t.yy<<endl;
+cout<<"age:"<<g.age<<endl<<"seat numbers:"<<se.s<<endl;
+return 0;
+}
